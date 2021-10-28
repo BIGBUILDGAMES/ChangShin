@@ -28,4 +28,12 @@ public class buttonController : UdonSharpBehaviour
             warningCanvas.SetActive(true);
         }
     }
+
+    public virtual void OnPlayerRespawn(VRC.SDKBase.VRCPlayerApi player)
+    {
+        if (player.isLocal || player.isMaster)
+        {
+            look = true;
+        }
+    }
 }

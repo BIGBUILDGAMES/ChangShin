@@ -18,4 +18,13 @@ public class AttiAvatarController : UdonSharpBehaviour
         jongAvatar.SetActive(true);
         attiAvatar.SetActive(false);
     }
+
+    public virtual void OnPlayerRespawn(VRC.SDKBase.VRCPlayerApi player)
+    {
+        if (player.isLocal || player.isMaster)
+        {
+            jongAvatar.SetActive(true);
+            attiAvatar.SetActive(false);
+        }
+    }
 }

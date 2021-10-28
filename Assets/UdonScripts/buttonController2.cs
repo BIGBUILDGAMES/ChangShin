@@ -6,25 +6,31 @@ using VRC.Udon;
 
 public class buttonController2 : UdonSharpBehaviour
 {
-    public bool look;
+    public bool look = false;
     public DoorController doorCtr;
-    public GameObject warningCanvas;
-    public GameObject jdDol;
-
-    void Start()
-    {
-        look = true;
-    }
+    public GameObject[] jdDol;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == jdDol)
+        if (!look)
         {
-            doorCtr.ToggleDoor();
+            for (int i = 0; i < 10; i++)
+            {
+                if (collision.gameObject == jdDol[i])
+                {
+                    doorCtr.ToggleDoor();
+                    look = true;
+                    return;
+                }
+            }
         }
-        else
+    }
+
+    public virtual void OnPlayerRespawn(VRC.SDKBase.VRCPlayerApi player)
+    {
+        if (player.isLocal || player.isMaster)
         {
-            warningCanvas.SetActive(true);
+            look = false;
         }
     }
 }

@@ -23,6 +23,7 @@ public class OpeningCotroller : UdonSharpBehaviour
     private float delay;
     public float introLimitTime;
     public GameObject darkroom;
+    public GameObject startMirror;
 
     public GameObject playcanvas;
     public AudioSource audioSource;
@@ -145,6 +146,7 @@ public class OpeningCotroller : UdonSharpBehaviour
                 audioController.BGMPlaying();
                 audioSource.Play();
                 background.SetActive(false);
+                startMirror.SetActive(true);
                 darkroom.SetActive(false);
                 gameObject.SetActive(false);
             }

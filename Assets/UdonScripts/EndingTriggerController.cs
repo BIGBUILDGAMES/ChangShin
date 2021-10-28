@@ -21,9 +21,6 @@ public class EndingTriggerController : UdonSharpBehaviour
     public GameObject endingEvent3;
     public GameObject endingEvent4;
 
-    public AudioSource audioSource;
-    public AudioController audioController;
-    public AudioTriggerController audioTriggerController;
 
     void Start()
     {
@@ -51,22 +48,11 @@ public class EndingTriggerController : UdonSharpBehaviour
     {
         if (hiBool && !aniTrigger)
         {
-            audioTriggerController.isAudio = true;
-            audioSource.volume = 1.0f;
-            audioController.BGMEnding();
-            audioSource.Play();
-
             animator.SetTrigger("hiTrigger");
             animator1.SetTrigger("hiTrigger");
             animator2.SetTrigger("hiTrigger");
             animator3.SetTrigger("hiTrigger");
             animator4.SetTrigger("hiTrigger");
-
-            animator.SetBool("danceBool", true);
-            animator1.SetBool("danceBool", true);
-            animator2.SetBool("danceBool", true);
-            animator3.SetBool("danceBool", true);
-            animator4.SetBool("danceBool", true);
 
             aniTrigger = true;
         }
@@ -79,18 +65,11 @@ public class EndingTriggerController : UdonSharpBehaviour
             aniTrigger = false;
             hiBool = false;
 
-            animator.SetBool("danceBool", false);
-            animator1.SetBool("danceBool", false);
-            animator2.SetBool("danceBool", false);
-            animator3.SetBool("danceBool", false);
-            animator4.SetBool("danceBool", false);
-
             animator.SetTrigger("endingTrigger");
             animator1.SetTrigger("endingTrigger");
             animator2.SetTrigger("endingTrigger");
             animator3.SetTrigger("endingTrigger");
             animator4.SetTrigger("endingTrigger");
-
         }
     }
 }
